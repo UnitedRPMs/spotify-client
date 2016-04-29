@@ -1,7 +1,8 @@
-# spotify-client
-
-Summary:        Spotify music player native client
-
-Version:        1.0.27
-
-License:        https://www.spotify.com/legal/end-user-agreement
+#           spotify-client
+ 
+Summary:        A Open Source installer for spotify a proprietary peer-to-peer music streaming service
+ 
+Version:        1.0.28.89.gf959d4ce
+ 
+License:        GPLv3
+ 
