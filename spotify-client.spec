@@ -1,4 +1,5 @@
-%define	current	1.0.28.89.gf959d4ce
+%define	current	1.0.31.56.g526cfefe
+
 
 
 AutoReqProv: no
@@ -15,6 +16,7 @@ BuildArch: 	noarch
 Source1:	https://raw.github.com/kuboosoft/spotify-client-installer/master/spotify
 Source2:	spotify.protocol
 Source3:	spotify-linux-128.png
+Source4:	spotify-reset.png
 BuildRequires: 	binutils
 Requires:	desktop-file-utils alsa-lib glibc libXScrnSaver qtwebkit
 Requires:	nspr nss nss-util systemd-libs openssl-libs openssl1 systemd-devel xterm wget binutils tar 
@@ -51,6 +53,20 @@ chmod a+x %{buildroot}/usr/bin/spotify
 
 install -dm 755 %{buildroot}/%{_datadir}/icons/
 install -m 644 %{SOURCE3} %{buildroot}/%{_datadir}/icons/
+install -m 644 %{SOURCE4} %{buildroot}/%{_datadir}/icons/
+
+echo '#!/bin/sh
+if [ -d $HOME/.local/share/spotify/ ]; then
+rm -rf $HOME/.local/share/spotify/
+fi
+if [ -d $HOME/.config/spotify/ ]; then
+rm -rf $HOME/.config/spotify/
+fi
+if [ -d $HOME/.cache/spotify/ ]; then
+rm -rf $HOME/.cache/spotify/
+fi
+notify-send --hint=int:transient:1 "Restored Spotify-Client" -i "/usr/share/icons/spotify-reset.png"' > %{buildroot}/%{_bindir}/spotify-reset
+chmod a+x %{buildroot}/%{_bindir}/spotify-reset
 
 # menu-entry
 install -dm 755 %{buildroot}/%{_datadir}/applications
@@ -67,27 +83,43 @@ StartupNotify=false
 Terminal=false
 EOF
 
+# menu-entry spotify-reset
+install -dm 755 %{buildroot}/%{_datadir}/applications
+cat > %{buildroot}/%{_datadir}/applications/%{name}-reset.desktop << EOF
+[Desktop Entry]
+Name=spotify-reset
+GenericName=spotify-reset
+Comment=Reset Spotify
+Icon=/usr/share/icons/spotify-reset.png
+Type=Application
+Categories=AudioVideo;
+Exec=spotify-reset
+StartupNotify=false
+Terminal=false
+EOF
+
 
 
   # Copy protocol file if KDE is installed
   install -dm 755 %{buildroot}/usr/share/kde4/services/
   install -m 644 %{SOURCE2} %{buildroot}/usr/share/kde4/services/
-
-%post
-
-if [ -d $HOME/.local/share/spotify/ ]; then
-rm -rf $HOME/.local/share/spotify/
-fi                   
+         
 
 %files
 %defattr(755, root, root)
 %{_bindir}/spotify
+%{_bindir}/spotify-reset
 %{_datadir}/kde4/services/spotify.protocol
 %{_datadir}/applications/%{name}.desktop
+%{_datadir}/applications/%{name}-reset.desktop
 %{_datadir}/icons/spotify-linux-128.png
+%{_datadir}/icons/spotify-reset.png
 
 
 %changelog
+
+* Tue May 31 2016 David Vásquez <davidjeremias82[AT]gmail [DOT] com> - 1.0.31.56.g526cfefe-1
+- Updated to 1.0.31.56.g526cfefe
 
 * Thu Apr 28 2016 David Vásquez <davidjeremias82[AT]gmail [DOT] com> - 1.0.28.89.gf959d4ce-1
 - Updated to 1.0.28.89.gf959d4ce
