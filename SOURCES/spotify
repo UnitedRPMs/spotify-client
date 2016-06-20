@@ -62,11 +62,9 @@ install -dm 775 /tmp/source
 cd /tmp/
 
 if [ `getconf LONG_BIT` = "64" ]; then
-#xterm -e 'wget -c -r -l1 -H -t1 -nd -N -np -A spotify-client*amd64.deb -erobots=off http://repository.spotify.com/pool/non-free/s/spotify/'
-xterm -e 'wget -c -r -l1 -H -t1 -nd -N -np -A spotify-client*amd64.deb -erobots=off http://repository.spotify.com/pool/non-free/s/spotify-client/'
+xterm -e 'wget -c -r -l1 -H -t1 -nd -N -np -A spotify-client\*amd64.deb -erobots=off http://repository.spotify.com/pool/non-free/s/spotify-client/'
 else
-xterm -e 'wget -c -r -l1 -H -t1 -nd -N -np -A spotify-client*i386.deb -erobots=off http://repository.spotify.com/pool/non-free/s/spotify-client/'
-#wget -c https://dl.dropboxusercontent.com/u/8593574/Spotify/spotify-client_0.9.4.183.g644e24e.428-1_i386.deb
+xterm -e 'wget -c -r -l1 -H -t1 -nd -N -np -A spotify-client\*i386.deb -erobots=off http://repository.spotify.com/pool/non-free/s/spotify-client/'
 fi
 
 wait ${!}
