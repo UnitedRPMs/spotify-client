@@ -6,7 +6,7 @@ AutoReqProv: no
 
 Name:           spotify-client
 Version:        %{current}
-Release:        1%{?dist}
+Release:        2%{?dist}
 Summary:        A Open Source installer for spotify a proprietary peer-to-peer music streaming service
 
 License:        GPLv3
@@ -117,6 +117,8 @@ EOF
 
 
 %changelog
+* Tue Jun 21 2016 Pavlo Rudyi <paulcarroty at riseup.net> - 1.0.31.56.g526cfefe-2
+- Added patch for the correct work with zsh shell, thx to @edgan
 
 * Tue May 31 2016 David Vásquez <davidjeremias82[AT]gmail [DOT] com> - 1.0.31.56.g526cfefe-1
 - Updated to 1.0.31.56.g526cfefe
