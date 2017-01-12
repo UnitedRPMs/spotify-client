@@ -1,6 +1,4 @@
-%define	current	1.0.31.56.g526cfefe
-
-
+%define	current	1.0.44.100.ga60c0ce1
 
 AutoReqProv: no
 
@@ -17,10 +15,11 @@ Source1:	https://raw.github.com/kuboosoft/spotify-client-installer/master/spotif
 Source2:	spotify.protocol
 Source3:	spotify-linux-128.png
 Source4:	spotify-reset.png
+Source5:	spotify.appdata.xml
 BuildRequires: 	binutils
 Requires:	desktop-file-utils alsa-lib glibc libXScrnSaver qtwebkit
-Requires:	nspr nss nss-util systemd-libs openssl-libs openssl1 systemd-devel xterm wget binutils tar 
-Requires:	libgcrypt1.5.4 gtk2 dbus-x11 libssh2 libcurl libnotify
+Requires:	nspr nss nss-util systemd-libs openssl-spotify systemd xterm wget binutils tar 
+Requires:	gtk2 dbus-x11 libssh2 libcurl libnotify
 
 Conflicts:	lpf-spotify-client
 
@@ -99,10 +98,13 @@ Terminal=false
 EOF
 
 
-
-  # Copy protocol file if KDE is installed
-  install -dm 755 %{buildroot}/usr/share/kde4/services/
+# Copy protocol file if KDE is installed
+  install -dm 755 %{buildroot}/%{_datadir}/kde4/services/
   install -m 644 %{SOURCE2} %{buildroot}/usr/share/kde4/services/
+
+# Install AppData
+  install -dm 755 %{buildroot}/%{_datadir}/appdata
+  install -m 0644 %{SOURCE5} %{buildroot}%{_datadir}/appdata/
          
 
 %files
@@ -114,9 +116,17 @@ EOF
 %{_datadir}/applications/%{name}-reset.desktop
 %{_datadir}/icons/spotify-linux-128.png
 %{_datadir}/icons/spotify-reset.png
+%{_datadir}/appdata/spotify.appdata.xml
 
 
 %changelog
+
+* Sat Jan 07 2017 David Vásquez <davidjeremias82[AT]gmail [DOT] com> - 1.0.44.100.ga60c0ce1-2
+- Used openssl official
+
+* Sat Jan 07 2017 David Vásquez <davidjeremias82[AT]gmail [DOT] com> - 1.0.44.100.ga60c0ce1-1
+- Updated to 1.0.44.100.ga60c0ce1
+
 * Tue Jun 21 2016 Pavlo Rudyi <paulcarroty at riseup.net> - 1.0.31.56.g526cfefe-2
 - Added patch for the correct work with zsh shell, thx to @edgan
 

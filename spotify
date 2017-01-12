@@ -2,7 +2,7 @@
 #
 # Uses alternative libs
 # Passes all parametrs to spotify
-# This only a script installer it download the oficial .deb from http://repository.spotify.com/pool/non-free/s/spotify/ and install in you personal directory. This script is Open Source own a GPLv3 http://www.gnu.org/licenses/gpl-3.0.html.
+# This only a script installer it download the oficial .deb from http://repository.spotify.com/pool/non-free/s/spotify/ and install in your personal directory. This script is Open Source own a GPLv3 http://www.gnu.org/licenses/gpl-3.0.html.
 
 
 # Run only one instance, thanks Todd T 
@@ -46,15 +46,84 @@ if [ ! -d ~/.config/spotify ]; then
 mkdir ~/.config/spotify/
 fi
 
-# Run the program if exis, else will install Spotify
+
+#LIBS
+libs_spotify() {
+if [ `getconf LONG_BIT` = "64" ]; then
+libdir=lib64
+else
+libdir=lib
+fi
+
+  # libplc4.so
+  ln -sf /usr/$libdir/libplc4.so $HOME/.local/share/spotify/libs/libplc4.so.0d
+
+  # libnspr4.so
+  ln -sf /usr/$libdir/libnspr4.so $HOME/.local/share/spotify/libs/libnspr4.so.0d
+
+  # libnss3.so
+  ln -sf /usr/$libdir/libnss3.so $HOME/.local/share/spotify/libs/libnss3.so.1d
+
+  # libnssutil3.so
+  ln -sf /usr/$libdir/libnssutil3.so $HOME/.local/share/spotify/libs/libnssutil3.so.1d
+
+  # libsmime3.so
+  ln -sf /usr/$libdir/libsmime3.so $HOME/.local/share/spotify/libs/libsmime3.so.1d
+
+  # libudev.so
+pushd /usr/$libdir/
+    udevlib=$(ls -l | grep -v ^l | grep libudev | head -1 | awk '{print $NF}')
+popd
+rm -f $HOME/.local/share/spotify/libs/libudev*
+  ln -sf /usr/$libdir/$udevlib $HOME/.local/share/spotify/libs/libudev.so.0
+
+  # openssl 
+  # Spotify requires a old openssl, the symlink to new openssl doesn't work
+#pushd /usr/$libdir/
+  #  opensslib=$(ls -l | grep -v ^l | grep libssl | head -1 | awk '{print $NF}')
+  #  cryptolib=$(ls -l | grep -v ^l | grep libcrypto | head -1 | awk '{print $NF}')
+#popd
+#  rm -f $HOME/.local/share/spotify/libs/libssl*
+#  rm -f $HOME/.local/share/spotify/libs/libcrypto*
+  ln -sf /usr/$libdir/libssl.so.1.0.0 $HOME/.local/share/spotify/libs/libssl.so.1.0.0
+  ln -sf /usr/$libdir/libcrypto.so.1.0.0 $HOME/.local/share/spotify/libs/libcrypto.so.1.0.0
+
+
+  # libssl3.so
+  ln -sf /usr/$libdir/libssl3.so $HOME/.local/share/spotify/libs/libssl3.so.1d
+
+  # libplds4.so
+  ln -sf /usr/$libdir/libplds4.so $HOME/.local/share/spotify/libs/libplds4.so.0d
+
+  # libgcrypt
+pushd /usr/$libdir/
+    gcryptlib=$(ls -l | grep -v ^l | grep libgcrypt | head -1 | awk '{print $NF}')
+popd
+rm -f $HOME/.local/share/spotify/libs/libgcrypt*
+  ln -sf /usr/$libdir/$gcryptlib $HOME/.local/share/spotify/libs/libgcrypt.so.11
+
+  # libgdk
+  ln -sf /usr/$libdir/libgdk-x11-2.0.so.0 $HOME/.local/share/spotify/libs/libgdk-x11-2.0.so.0
+
+  #libgtk
+  ln -sf /usr/$libdir/libgtk-x11-2.0.so.0 $HOME/.local/share/spotify/libs/libgtk-x11-2.0.so.0
+
+  #ffmpegsumo  
+  ln -sf $HOME/.local/share/spotify/spotify-client/libcef.so $HOME/.local/share/spotify/libs/libffmpegsumo.so
+
+  # libcef.so
+  ln -sf $HOME/.local/share/spotify/spotify-client/libcef.so $HOME/.local/share/spotify/libs/libcef.so
+}
+
+# Run the program if exist, else It will installing Spotify
 
 if [ -f $HOME/.local/share/spotify/spotify-client/spotify ]; then
+libs_spotify
+wait ${!}
 cd $HOME/.local/share/spotify/spotify-client/
 LD_LIBRARY_PATH=$HOME/.local/share/spotify/libs/:/usr/lib64:/usr/lib:/usr/share/spotify/libs/:$HOME/.local/share/spotify/spotify-client/ $HOME/.local/share/spotify/spotify-client/spotify "$@"
 
-
 else
-
 
 # Downloading the current source
 install -dm 775 /tmp/source
@@ -93,62 +162,9 @@ install -dm 775 $HOME/.local/share/spotify/libs/
 install -dm 775 $HOME/.local/share/spotify/spotify-client
 cp -rf source/usr/share/spotify/* $HOME/.local/share/spotify/spotify-client
 
-
-
 wait ${!}
 
-#LIBS
-
-if [ `getconf LONG_BIT` = "64" ]; then
-libdir=lib64
-else
-libdir=lib
-fi
-
-  # libplc4.so
-  ln -sf /usr/$libdir/libplc4.so $HOME/.local/share/spotify/libs/libplc4.so.0d
-
-  # libnspr4.so
-  ln -sf /usr/$libdir/libnspr4.so $HOME/.local/share/spotify/libs/libnspr4.so.0d
-
-  # libnss3.so
-  ln -sf /usr/$libdir/libnss3.so $HOME/.local/share/spotify/libs/libnss3.so.1d
-
-  # libnssutil3.so
-  ln -sf /usr/$libdir/libnssutil3.so $HOME/.local/share/spotify/libs/libnssutil3.so.1d
-
-  # libsmime3.so
-  ln -sf /usr/$libdir/libsmime3.so $HOME/.local/share/spotify/libs/libsmime3.so.1d
-
-  # libudev.so
-  ln -sf /usr/$libdir/libudev.so.0 $HOME/.local/share/spotify/libs/libudev.so.0
-
-  # openssl 
-  ln -sf /usr/$libdir/libssl.so.1.0.0 $HOME/.local/share/spotify/libs/libssl.so.1.0.0
-  ln -sf /usr/$libdir/libcrypto.so.1.0.0 $HOME/.local/share/spotify/libs/libcrypto.so.1.0.0
-
-
-  # libssl3.so
-  ln -sf /usr/$libdir/libssl3.so $HOME/.local/share/spotify/libs/libssl3.so.1d
-
-  # libplds4.so
-  ln -sf /usr/$libdir/libplds4.so $HOME/.local/share/spotify/libs/libplds4.so.0d
-
-  # libgcrypt
-  ln -sf /usr/$libdir/libgcrypt.so.11.8.3 $HOME/.local/share/spotify/libs/libgcrypt.so.11
-
-  # libgdk
-  ln -sf /usr/$libdir/libgdk-x11-2.0.so.0 $HOME/.local/share/spotify/libs/libgdk-x11-2.0.so.0
-
-  #libgtk
-  ln -sf /usr/$libdir/libgtk-x11-2.0.so.0 $HOME/.local/share/spotify/libs/libgtk-x11-2.0.so.0
-
-  #ffmpegsumo  
-  ln -sf $HOME/.local/share/spotify/spotify-client/libcef.so $HOME/.local/share/spotify/libs/libffmpegsumo.so
-
-  # libcef.so
-  ln -sf $HOME/.local/share/spotify/spotify-client/libcef.so $HOME/.local/share/spotify/libs/libcef.so
-
+libs_spotify
 
 wait ${!}
 

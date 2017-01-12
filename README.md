@@ -2,7 +2,7 @@
  
 Summary:        A Open Source installer for spotify a proprietary peer-to-peer music streaming service
  
-Version:        1.0.31.56.g526cfefe
+Version:        1.0.44.100.ga60c0ce1
  
 License:        GPLv3
  
