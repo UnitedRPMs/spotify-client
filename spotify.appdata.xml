@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <component type="desktop">
-  <id>spotify.desktop</id>
+  <id>spotify-client.desktop</id>
   <name>Spotify</name>
   <summary>Installer for the Spotify client</summary>
   <description>
