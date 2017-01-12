@@ -113,6 +113,9 @@ rm -f $HOME/.local/share/spotify/libs/libgcrypt*
 
   # libcef.so
   ln -sf $HOME/.local/share/spotify/spotify-client/libcef.so $HOME/.local/share/spotify/libs/libcef.so
+
+  # widevine
+  ln -sf $HOME/.local/share/spotify/spotify-client/libwidevinecdmadapter.so $HOME/.local/share/spotify/libs/libwidevinecdmadapter.so
 }
 
 # Run the program if exist, else It will installing Spotify
