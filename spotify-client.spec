@@ -1,10 +1,10 @@
-%define	current	1.0.44.100.ga60c0ce1
+%define	current	1.0.64.407
 
 AutoReqProv: no
 
 Name:           spotify-client
 Version:        %{current}
-Release:        2%{?dist}
+Release:        1%{?dist}
 Summary:        A Open Source installer for spotify a proprietary peer-to-peer music streaming service
 
 License:        GPLv3
@@ -19,7 +19,7 @@ Source5:	spotify.appdata.xml
 BuildRequires: 	binutils
 Requires:	desktop-file-utils alsa-lib glibc libXScrnSaver qtwebkit
 Requires:	nspr nss nss-util systemd-libs openssl-spotify systemd xterm wget binutils tar 
-Requires:	gtk2 dbus-x11 libssh2 libcurl libnotify
+Requires:	gtk2 dbus-x11 libssh2 libcurl libnotify libatomic
 
 Conflicts:	lpf-spotify-client
 
@@ -120,6 +120,9 @@ EOF
 
 
 %changelog
+
+* Sun Oct 22 2017 David Vásquez <davidjeremias82[AT]gmail [DOT] com> - 1.0.64.407-1
+- Updated to 1.0.64.407
 
 * Sat Jan 07 2017 David Vásquez <davidjeremias82[AT]gmail [DOT] com> - 1.0.44.100.ga60c0ce1-2
 - Used openssl official
