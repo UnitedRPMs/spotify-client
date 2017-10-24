@@ -124,7 +124,7 @@ if [ -f $HOME/.local/share/spotify/spotify-client/spotify ]; then
 libs_spotify
 wait ${!}
 cd $HOME/.local/share/spotify/spotify-client/
-LD_LIBRARY_PATH=$HOME/.local/share/spotify/libs/:/usr/lib64:/usr/lib:/usr/share/spotify/libs/:$HOME/.local/share/spotify/spotify-client/ $HOME/.local/share/spotify/spotify-client/spotify "$@"
+LD_LIBRARY_PATH=$HOME/.local/share/spotify/libs/:/usr/lib64:/usr/lib:/usr/share/spotify/libs/:/usr/lib64/spotify-client/:/usr/lib/spotify-client/:$HOME/.local/share/spotify/spotify-client/ $HOME/.local/share/spotify/spotify-client/spotify "$@"
 
 else
 
@@ -172,7 +172,7 @@ libs_spotify
 wait ${!}
 
 cd $HOME/.local/share/spotify/spotify-client/
-LD_LIBRARY_PATH=$HOME/.local/share/spotify/libs/:/usr/lib64:/usr/lib:/usr/share/spotify/libs/:$HOME/.local/share/spotify/spotify-client/ $HOME/.local/share/spotify/spotify-client/spotify "$@"
+LD_LIBRARY_PATH=$HOME/.local/share/spotify/libs/:/usr/lib64:/usr/lib:/usr/share/spotify/libs/:/usr/lib64/spotify-client/:/usr/lib/spotify-client/:$HOME/.local/share/spotify/spotify-client/ $HOME/.local/share/spotify/spotify-client/spotify "$@"
 
 rm -rf /tmp/opt
 rm -rf /tmp/source
