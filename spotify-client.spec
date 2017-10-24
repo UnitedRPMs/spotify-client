@@ -19,7 +19,7 @@ Source5:	spotify.appdata.xml
 BuildRequires: 	binutils
 Requires:	desktop-file-utils alsa-lib glibc libXScrnSaver qtwebkit
 Requires:	nspr nss nss-util systemd-libs openssl-spotify systemd xterm wget binutils tar 
-Requires:	gtk2 dbus-x11 libssh2 libcurl libnotify libatomic
+Requires:	gtk2 dbus-x11 libssh2 libcurl libnotify libatomic spotify-curl
 
 Conflicts:	lpf-spotify-client
 
