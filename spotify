@@ -49,6 +49,7 @@ fi
 
 #LIBS
 libs_spotify() {
+echo 'Loading libs...'
 if [ `getconf LONG_BIT` = "64" ]; then
 libdir=lib64
 else
@@ -69,6 +70,9 @@ fi
 
   # libsmime3.so
   ln -sf /usr/$libdir/libsmime3.so $HOME/.local/share/spotify/libs/libsmime3.so.1d
+
+  # libcurl-openssl
+  ln -sf /opt/shibboleth/lib64/libcurl.so.4.3.0 $HOME/.local/share/spotify/libs/libcurl.so.4
 
   # libudev.so
 pushd /usr/$libdir/

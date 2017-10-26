@@ -1,4 +1,4 @@
-%define	current	1.0.64.407
+%define	current	1.0.66.478
 
 AutoReqProv: no
 
@@ -120,6 +120,9 @@ EOF
 
 
 %changelog
+
+* Wed Oct 25 2017 David Vásquez <davidjeremias82[AT]gmail [DOT] com> - 1.0.66.478-1
+- Updated to 1.0.66.478
 
 * Sun Oct 22 2017 David Vásquez <davidjeremias82[AT]gmail [DOT] com> - 1.0.64.407-1
 - Updated to 1.0.64.407
