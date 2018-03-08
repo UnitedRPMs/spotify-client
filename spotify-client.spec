@@ -1,4 +1,4 @@
-%global	current	1.0.70.399
+%global	current	1.0.72.117
 
 AutoReqProv: no
 
@@ -120,6 +120,9 @@ EOF
 
 
 %changelog
+
+* Wed Mar 07 2018 David Vásquez <davidjeremias82[AT]gmail [DOT] com> - 1.0.72.117-1
+- Updated to 1.0.72.117
 
 * Wed Jan 17 2018 David Vásquez <davidjeremias82[AT]gmail [DOT] com> - 1.0.70.399-1
 - Updated to 1.0.70.399
