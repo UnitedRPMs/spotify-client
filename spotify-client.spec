@@ -122,7 +122,7 @@ EOF
 
 %changelog
 
-* Sun Mar 25 2018 David Vásquez <davidjeremias82[AT]gmail [DOT] com> - 1.0.77.336-1
+* Sun Mar 25 2018 David Vásquez <davidjeremias82[AT]gmail [DOT] com> - 1.0.77.336-2
 - Updated to 1.0.77.336
 
 * Wed Mar 07 2018 David Vásquez <davidjeremias82[AT]gmail [DOT] com> - 1.0.72.117-1
