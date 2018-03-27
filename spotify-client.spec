@@ -1,10 +1,11 @@
-%global	current	1.0.72.117
+%global	current	1.0.77.336
 
 AutoReqProv: no
 
 Name:           spotify-client
 Version:        %{current}
-Release:        1%{?dist}
+Release:        2%{?dist}
+Epoch:		1
 Summary:        A Open Source installer for spotify a proprietary peer-to-peer music streaming service
 
 License:        GPLv3
@@ -120,6 +121,9 @@ EOF
 
 
 %changelog
+
+* Sun Mar 25 2018 David Vásquez <davidjeremias82[AT]gmail [DOT] com> - 1.0.77.336-1
+- Updated to 1.0.77.336
 
 * Wed Mar 07 2018 David Vásquez <davidjeremias82[AT]gmail [DOT] com> - 1.0.72.117-1
 - Updated to 1.0.72.117
