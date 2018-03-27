@@ -5,7 +5,6 @@ AutoReqProv: no
 Name:           spotify-client
 Version:        %{current}
 Release:        2%{?dist}
-Epoch:		1
 Summary:        A Open Source installer for spotify a proprietary peer-to-peer music streaming service
 
 License:        GPLv3
