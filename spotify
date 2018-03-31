@@ -73,6 +73,7 @@ fi
 
   # libcurl-openssl
   ln -sf /opt/shibboleth/$libdir/libcurl.so.4.3.0 $HOME/.local/share/spotify/libs/libcurl.so.4
+  ln -sf /opt/shibboleth/$libdir/libcurl.so.4.3.0 $HOME/.local/share/spotify/libs/libcurl-gnutls.so.4
 
   # libudev.so
 pushd /usr/$libdir/

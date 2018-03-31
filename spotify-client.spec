@@ -1,4 +1,4 @@
-%global	current	1.0.77.336
+%global	current	1.0.77.338
 
 AutoReqProv: no
 
@@ -121,8 +121,9 @@ EOF
 
 %changelog
 
-* Sun Mar 25 2018 David Vásquez <davidjeremias82[AT]gmail [DOT] com> - 1.0.77.336-2
-- Updated to 1.0.77.336
+* Thu Mar 29 2018 David Vásquez <davidjeremias82[AT]gmail [DOT] com> - 1.0.77.338-2
+- Updated to 1.0.77.338
+- libcurl fix
 
 * Wed Mar 07 2018 David Vásquez <davidjeremias82[AT]gmail [DOT] com> - 1.0.72.117-1
 - Updated to 1.0.72.117
