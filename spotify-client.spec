@@ -1,4 +1,4 @@
-%global	current	1.0.80.480
+%global	current	1.0.88.345
 
 AutoReqProv: no
 
@@ -120,6 +120,9 @@ EOF
 
 
 %changelog
+
+* Sat Aug 18 2018 David Va <davidva AT tuta DOT io> 1.0.88.345-2
+- Updated to 1.0.88.345
 
 * Thu May 31 2018 David Vásquez <davidjeremias82[AT]gmail [DOT] com> - 1.0.80.480-2
 - Updated to 1.0.80.480
