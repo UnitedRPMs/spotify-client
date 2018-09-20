@@ -1,9 +1,10 @@
-%global	current	1.0.89
+%global	current	1.0.89.313
 
 AutoReqProv: no
 
 Name:           spotify-client
 Version:        %{current}
+Epoch:		1
 Release:        2%{?dist}
 Summary:        A Open Source installer for spotify a proprietary peer-to-peer music streaming service
 
@@ -120,6 +121,9 @@ EOF
 
 
 %changelog
+
+* Thu Sep 20 2018 David Va <davidva AT tuta DOT io> 1.0.89.313-2
+- Updated to 1.0.89.313
 
 * Fri Sep 14 2018 David Va <davidva AT tuta DOT io> 1.0.89-2
 - Updated to 1.0.89
