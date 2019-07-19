@@ -129,7 +129,7 @@ if [ -f $HOME/.local/share/spotify/spotify-client/spotify ]; then
 libs_spotify
 wait ${!}
 cd $HOME/.local/share/spotify/spotify-client/
-LD_LIBRARY_PATH=$PWD:$HOME/.local/share/spotify/libs/:/usr/lib64:/usr/lib:/usr/share/spotify/libs/:/usr/lib64/spotify-client/:/usr/lib/spotify-client/:$HOME/.local/share/spotify/spotify-client/ $HOME/.local/share/spotify/spotify-client/spotify/spotify "$@"
+LD_LIBRARY_PATH=$PWD:$HOME/.local/share/spotify/libs/:/usr/lib64:/usr/lib:/usr/share/spotify/libs/:/usr/lib64/spotify-client/:/usr/lib/spotify-client/:$HOME/.local/share/spotify/spotify-client/ $HOME/.local/share/spotify/spotify-client/spotify "$@"
 
 else
 
@@ -168,8 +168,7 @@ wait ${!}
 
 install -dm 775 $HOME/.local/share/spotify/libs/
 rm -rf $HOME/.local/share/spotify/spotify-client
-install -dm 775 $HOME/.local/share/spotify/spotify-client
-cp -rf source/usr/share/spotify $HOME/.local/share/spotify/spotify-client
+mv -f source/usr/share/spotify $HOME/.local/share/spotify/spotify-client
 
 wait ${!}
 
@@ -178,7 +177,7 @@ libs_spotify
 wait ${!}
 
 cd $HOME/.local/share/spotify/spotify-client/
-LD_LIBRARY_PATH=$PWD:$HOME/.local/share/spotify/libs/:/usr/lib64:/usr/lib:/usr/share/spotify/libs/:/usr/lib64/spotify-client/:/usr/lib/spotify-client/:$HOME/.local/share/spotify/spotify-client/ $HOME/.local/share/spotify/spotify-client/spotify/spotify "$@"
+LD_LIBRARY_PATH=$PWD:$HOME/.local/share/spotify/libs/:/usr/lib64:/usr/lib:/usr/share/spotify/libs/:/usr/lib64/spotify-client/:/usr/lib/spotify-client/:$HOME/.local/share/spotify/spotify-client/ $HOME/.local/share/spotify/spotify-client/spotify "$@"
 
 rm -rf /tmp/opt
 rm -rf /tmp/source
