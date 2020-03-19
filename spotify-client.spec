@@ -1,4 +1,4 @@
-%global	current	1.1.10.546
+%global	current	1.1.26
 
 AutoReqProv: no
 
@@ -121,6 +121,9 @@ EOF
 
 
 %changelog
+
+* Thu Mar 19 2020 David Va <davidva AT tuta DOT io> 1.1.26-2
+- Updated to 1.1.26
 
 * Thu Jul 18 2019 David Va <davidva AT tuta DOT io> 1.1.10.546-2
 - Updated to 1.1.10.546
