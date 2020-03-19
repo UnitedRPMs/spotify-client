@@ -55,7 +55,7 @@ install -dm 755 %{buildroot}/%{_datadir}/icons/
 install -m 644 %{SOURCE3} %{buildroot}/%{_datadir}/icons/
 install -m 644 %{SOURCE4} %{buildroot}/%{_datadir}/icons/
 
-echo '#!/bin/sh
+echo '#!/usr/bin/bash
 if [ -d $HOME/.local/share/spotify/ ]; then
 rm -rf $HOME/.local/share/spotify/
 fi
