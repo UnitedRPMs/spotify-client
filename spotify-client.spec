@@ -1,4 +1,4 @@
-%global	current	1.1.26
+%global	current	1.1.26.501
 
 AutoReqProv: no
 
@@ -16,8 +16,8 @@ Source1:	https://raw.github.com/kuboosoft/spotify-client-installer/master/spotif
 Source2:	spotify.protocol
 Source3:	spotify-linux-128.png
 Source4:	spotify-reset.png
-Source5:	spotify.appdata.xml
-BuildRequires: 	binutils
+Source5:	com.spotify.spotify.metainfo.xml
+BuildRequires:	binutils
 Requires:	desktop-file-utils alsa-lib glibc libXScrnSaver qtwebkit
 Requires:	nspr nss nss-util systemd-libs openssl-spotify systemd xterm wget binutils tar 
 Requires:	gtk2 dbus-x11 libssh2 libcurl libnotify libatomic curl libcurl-openssl
@@ -104,8 +104,7 @@ EOF
   install -m 644 %{SOURCE2} %{buildroot}/usr/share/kde4/services/
 
 # Install AppData
-  install -dm 755 %{buildroot}/%{_datadir}/appdata
-  install -m 0644 %{SOURCE5} %{buildroot}%{_datadir}/appdata/
+  install -Dm 0644 %{S:5} %{buildroot}/%{_metainfodir}/com.spotify.spotify.metainfo.xml
          
 
 %files
@@ -117,10 +116,13 @@ EOF
 %{_datadir}/applications/%{name}-reset.desktop
 %{_datadir}/icons/spotify-linux-128.png
 %{_datadir}/icons/spotify-reset.png
-%{_datadir}/appdata/spotify.appdata.xml
+%{_metainfodir}/com.spotify.spotify.metainfo.xml
 
 
 %changelog
+
+* Tue Mar 31 2020 David Va <davidva AT tuta DOT io> 1.1.26.501-2
+- Updated to 1.1.26.501
 
 * Thu Mar 19 2020 David Va <davidva AT tuta DOT io> 1.1.26-2
 - Updated to 1.1.26
