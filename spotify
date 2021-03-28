@@ -25,7 +25,7 @@ check=20
 DAY=2
 
 # Deleting old source
-if [ -f /tmp/spotify-client*.deb ]; then                  
+if [ -f /tmp/repository-origin.spotify.com/pool/non-free/s/spotify-client/spotify-client*.deb ]; then                  
 find /tmp/ -name spotify-client*.deb -ctime +$DAY -exec rm -rf {} \;
 fi
 
@@ -139,17 +139,17 @@ install -dm 775 /tmp/source
 cd /tmp/
 
 if [ `getconf LONG_BIT` = "64" ]; then
-xterm -e 'wget -c -r -l1 -H -t1 -nd -N -np -A spotify-client\*amd64.deb -erobots=off http://repository.spotify.com/pool/non-free/s/spotify-client/'
+xterm -e 'wget -c -r -np --secure-protocol=TLSv1_2 --no-check-certificate -A spotify-client\*amd64.deb -erobots=off https://repository-origin.spotify.com/pool/non-free/s/spotify-client/'
 else
-xterm -e 'wget -c -r -l1 -H -t1 -nd -N -np -A spotify-client\*i386.deb -erobots=off http://repository.spotify.com/pool/non-free/s/spotify-client/'
+xterm -e 'wget -c -r -np --secure-protocol=TLSv1_2 --no-check-certificate -A spotify-client\*i386.deb -erobots=off https://repository-origin.spotify.com/pool/non-free/s/spotify-client/'
 fi
 
 wait ${!}
 
-package=$(ls | grep spotify-client_ | sort | sed '/^\s*$/d' | tail -1)
+package=$(ls "$PWD/repository-origin.spotify.com/pool/non-free/s/spotify-client/" | grep spotify-client_ | sort | sed '/^\s*$/d' | tail -1)
 
 
-ar x $package 
+ar x /tmp/repository-origin.spotify.com/pool/non-free/s/spotify-client/$package 
 
 wait ${!}
 
