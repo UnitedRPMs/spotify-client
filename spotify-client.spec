@@ -1,4 +1,4 @@
-%global	current	1.1.72.439
+%global	current	1.1.74.631
 
 AutoReqProv: no
 
@@ -120,6 +120,9 @@ EOF
 
 
 %changelog
+
+* Sat Dec 25 2021 David Va <davidva AT tuta DOT io> 1.1.74.631-2
+- Updated to 1.1.74.631
 
 * Wed Nov 24 2021 David Va <davidva AT tuta DOT io> 1.1.72.439-2
 - Updated to 1.1.72.439
